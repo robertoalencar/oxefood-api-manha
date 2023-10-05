@@ -35,7 +35,7 @@ public class ClienteController {
 
     @ApiOperation(value = MensagensDocumentacaoAPI.API_CADASTRO_CLIENTE)
     @PostMapping
-    public ResponseEntity<Cliente> save(@RequestBody ClienteRequest request) {
+    public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest request) {
 
         Cliente cliente = clienteService.save(request.build());
         return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
@@ -90,7 +90,7 @@ public class ClienteController {
     }
 
     @PutMapping("/endereco/{enderecoId}")
-    public ResponseEntity<EnderecoCliente> atualizarEnderecoCliente(@PathVariable("enderecoId") Long enderecoId, @RequestBody EnderecoClienteRequest request) {
+    public ResponseEntity<EnderecoCliente> atualizarEnderecoCliente(@PathVariable("enderecoId") Long enderecoId, @RequestBody @Valid EnderecoClienteRequest request) {
 
         EnderecoCliente endereco = clienteService.atualizarEnderecoCliente(enderecoId, request.build());
         return new ResponseEntity<EnderecoCliente>(endereco, HttpStatus.OK);
