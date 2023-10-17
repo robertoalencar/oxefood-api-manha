@@ -27,7 +27,9 @@ public class ClienteService {
         cliente.setHabilitado(Boolean.TRUE);
         cliente.setVersao(1L);
         cliente.setDataCriacao(LocalDate.now());
-        return repository.save(cliente);
+        Cliente clienteSalvo = repository.save(cliente);
+
+        return clienteSalvo;
     }
 
     public List<Cliente> findAll() {
