@@ -1,6 +1,5 @@
 package br.com.ifpe.oxefood.modelo.cliente;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,6 @@ public class ClienteService {
     public Cliente save(Cliente cliente) {
 
         cliente.setHabilitado(Boolean.TRUE);
-        cliente.setVersao(1L);
-        cliente.setDataCriacao(LocalDate.now());
         return repository.save(cliente);
     }
 
@@ -43,7 +40,6 @@ public class ClienteService {
         cliente.setFoneCelular(clienteAlterado.getFoneCelular());
         cliente.setFoneFixo(clienteAlterado.getFoneFixo());
             
-        cliente.setVersao(cliente.getVersao() + 1);
         repository.save(cliente);
     }
 
